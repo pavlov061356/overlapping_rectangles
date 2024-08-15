@@ -7,8 +7,21 @@ class Separation {
   // Индексы несдвигаемых прямоугольников
   List<int> fixedPositions = [];
 
-  Separation(this.rectangles, {this.fixedPositions = const []})
-      : assert(fixedPositions.length <= rectangles.length);
+  Separation(this.rectangles, {this.fixedPositions = const []}) {
+    assert(fixedPositions.length <= rectangles.length);
+
+    bool intersect = false;
+
+    for (int i = 0; i < rectangles.length; i++) {
+      for (int j = i + 1; j < rectangles.length; j++) {
+        if (rectangles[i].overlap(rectangles[j])) {
+          intersect = true;
+        }
+      }
+    }
+
+    assert(!intersect, "Fixed rectangles must not overlap");
+  }
 
   Offset translateVector(int idx) {
     Rectangle rect = rectangles[idx];
