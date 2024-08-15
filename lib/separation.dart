@@ -5,7 +5,7 @@ import 'package:overlapping_rectangles/rectangles.dart';
 class Separation {
   List<Rectangle> rectangles;
   // Индексы несдвигаемых прямоугольников
-  List<int> fixedPositions = [];
+  List<int> fixedPositions;
 
   Separation(this.rectangles, {this.fixedPositions = const []}) {
     assert(fixedPositions.length <= rectangles.length);
