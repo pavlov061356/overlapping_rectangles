@@ -4,8 +4,11 @@ import 'package:overlapping_rectangles/rectangles.dart';
 
 class Separation {
   List<Rectangle> rectangles;
+  // Индексы несдвигаемых прямоугольников
+  List<int> fixedPositions = [];
 
-  Separation(this.rectangles);
+  Separation(this.rectangles, {this.fixedPositions = const []})
+      : assert(fixedPositions.length <= rectangles.length);
 
   Offset translateVector(int idx) {
     Rectangle rect = rectangles[idx];
