@@ -12,8 +12,8 @@ class Separation {
 
     bool intersect = false;
 
-    for (int i = 0; i < rectangles.length; i++) {
-      for (int j = i + 1; j < rectangles.length; j++) {
+    for (int i = 0; i < fixedPositions.length; i++) {
+      for (int j = i + 1; j < fixedPositions.length; j++) {
         if (rectangles[i].overlap(rectangles[j])) {
           intersect = true;
         }
