@@ -48,6 +48,7 @@ class Separation {
       vecs.add(normalize(translateVector(i)));
     }
     for (int i = 0; i < rectangles.length; i++) {
+      if (fixedPositions.contains(i)) continue;
       rectangles[i].left += vecs[i].dx;
       rectangles[i].top += vecs[i].dy;
     }
