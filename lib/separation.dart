@@ -5,22 +5,7 @@ import 'package:overlapping_rectangles/rectangles.dart';
 class Separation {
   List<Rectangle> rectangles;
 
-  Separation(this.rectangles) {
-    var fixedPositions =
-        rectangles.where((r) => r.isFixed).map((r) => r).toList();
-
-    bool intersect = false;
-
-    for (int i = 0; i < fixedPositions.length; i++) {
-      for (int j = i + 1; j < fixedPositions.length; j++) {
-        if (rectangles[i].overlap(rectangles[j])) {
-          intersect = true;
-        }
-      }
-    }
-
-    assert(!intersect, "Fixed rectangles must not overlap");
-  }
+  Separation(this.rectangles);
 
   Offset translateVector(int idx) {
     Rectangle rect = rectangles[idx];
