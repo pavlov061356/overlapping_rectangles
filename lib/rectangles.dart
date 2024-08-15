@@ -85,6 +85,7 @@ class Rectangle {
   static bool hasOverlaps(List<Rectangle> rectangles) {
     for (var i = 0; i < rectangles.length; i++) {
       for (var j = i + 1; j < rectangles.length; j++) {
+        if (rectangles[i].isFixed && rectangles[j].isFixed) continue;
         if (rectangles[i].overlap(rectangles[j])) return true;
       }
     }
@@ -95,6 +96,7 @@ class Rectangle {
     List<Rectangle> overlaps = [];
     for (var i = 0; i < rectangles.length; i++) {
       for (var j = i + 1; j < rectangles.length; j++) {
+        if (rectangles[i].isFixed && rectangles[j].isFixed) continue;
         if (rectangles[i].overlap(rectangles[j])) {
           overlaps.add(rectangles[i].overlapRect(rectangles[j]));
         }
