@@ -7,13 +7,10 @@ void runSeparation(
   String inputCsvPath,
   String outputCsvPath, {
   Duration timeout = const Duration(minutes: 10),
-  // Индексы несдвигаемых прямоугольников
-  List<int> fixedPositions = const [],
 }) {
   List<Rectangle> rectangles = Rectangle.fromCsv(inputCsvPath);
   Separation separation = Separation(
     rectangles,
-    fixedPositions: fixedPositions,
   );
 
   var startTime = DateTime.now();

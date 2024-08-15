@@ -4,11 +4,10 @@ import 'package:overlapping_rectangles/rectangles.dart';
 
 class Separation {
   List<Rectangle> rectangles;
-  // Индексы несдвигаемых прямоугольников
-  List<int> fixedPositions;
 
-  Separation(this.rectangles, {this.fixedPositions = const []}) {
-    assert(fixedPositions.length <= rectangles.length);
+  Separation(this.rectangles) {
+    var fixedPositions =
+        rectangles.where((r) => r.isFixed).map((r) => r).toList();
 
     bool intersect = false;
 
@@ -61,7 +60,7 @@ class Separation {
       vecs.add(normalize(translateVector(i)));
     }
     for (int i = 0; i < rectangles.length; i++) {
-      if (fixedPositions.contains(i)) continue;
+      if (rectangles[i].isFixed) continue;
       rectangles[i].left += vecs[i].dx;
       rectangles[i].top += vecs[i].dy;
     }
