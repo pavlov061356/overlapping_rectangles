@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:overlapping_rectangles/rectangles.dart';
+import 'package:overlapping_rectangles/separation.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -66,6 +67,18 @@ void main() {
       expect(r1.overlapx(r2), 2);
       expect(r1.overlapy(r2), 2);
       expect(r1.overlapRect(r2).area, 4);
+    });
+
+    test('contained overlap in Separation', () {
+      Rectangle r1 = Rectangle(0, 0, 10, 10, isFixed: true);
+      Rectangle r2 = Rectangle(5, 5, 2, 2, isFixed: true);
+      expect(r1.overlap(r2), true);
+
+      try {
+        Separation _ = Separation([r1, r2]);
+      } catch (e) {
+        expect(e, isA<AssertionError>());
+      }
     });
 
     test('border not overlap', () {

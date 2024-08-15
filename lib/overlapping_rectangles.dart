@@ -9,7 +9,9 @@ void runSeparation(
   Duration timeout = const Duration(minutes: 10),
 }) {
   List<Rectangle> rectangles = Rectangle.fromCsv(inputCsvPath);
-  Separation separation = Separation(rectangles);
+  Separation separation = Separation(
+    rectangles,
+  );
 
   var startTime = DateTime.now();
   while (DateTime.now().difference(startTime) < timeout) {

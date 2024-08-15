@@ -17,12 +17,15 @@ class Rectangle {
   double originalLeft;
   double originalTop;
 
+  bool isFixed;
+
   Rectangle(
     this.left,
     this.top,
     this.width,
-    this.height,
-  )   : originalLeft = left,
+    this.height, {
+    this.isFixed = false,
+  })  : originalLeft = left,
         originalTop = top;
 
   double get right => left + width;
